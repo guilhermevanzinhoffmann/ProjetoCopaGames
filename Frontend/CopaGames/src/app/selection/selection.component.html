@@ -1,0 +1,45 @@
+<div class="principal">
+  <div>
+    <mat-card style="background-color: rgb(68, 68, 124); align-items: center;">
+      <div>
+        <p style="text-align: center;">Copa do Mundo de Games</p>
+      </div>
+      <mat-card-title id="title" class="cardTitle" style="text-align: center;">{{title | uppercase}}</mat-card-title>
+      <mat-card-content>
+        <p style="text-align: center;">Selecione 8 games que você queira que entrem na seleção e depois pressione o botão "Gerar Campeonato" para prosseguir.</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div style="margin-top: 15px;" class="wrapper">
+    <div>
+      <p style="text-align: right; margin-bottom: 0px;">SELECIONADOS</p>
+      <p ngDefaultControl style="text-align: right; padding-top: 0px;" [(ngModel)]="totalSelected">{{totalSelected}} GAMES</p>
+    </div>
+    <div>
+      <button mat-button id="button" [disabled]="totalSelected < 8" (click)="goToResult()" class="btnGen">Gerar Campeonato</button>
+    </div>
+  </div>
+  <div>
+    <mat-grid-list cols="4" rowHeight="300px">
+      <mat-grid-tile  *ngFor="let game of games, let i = index;">
+        <mat-card style="width: 300px; height: 230px;">
+          <mat-checkbox id="checkbox{{i}}"
+            [disabled]="!game.selected && totalSelected > 7"
+            [(ngModel)]="game.selected"
+            [checked]="game.selected"
+            (ngModelChange)="updateCheckedState()">
+            <mat-card-title id="title-game" class="cardStyle" style="padding-top: 13px; font-size: small;">{{game.titulo.split("(")[0]}}</mat-card-title>
+          </mat-checkbox>
+          <mat-card-content style="padding-top: 25px;">
+            <img id="urlImage" class="imageSize" mat-card-image src="{{game.urlImagem}}">
+          </mat-card-content>
+          <mat-card-footer>
+            <div style="display: inline;">
+              <p id="year" style="text-align: left; padding-left: 15px;">{{game.ano}}<span id="console" style="text-align: right; float: right; padding-right: 15px;">{{game.titulo.split("(")[1].split(")")[0]}}</span></p>
+            </div>
+          </mat-card-footer>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

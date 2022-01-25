@@ -1,0 +1,36 @@
+.principal{
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.cardTitle{
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+.btnGen{
+  float: right;
+  background-color: cyan;
+  border-style: groove;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.cardStyle{
+  max-width: 230px;
+  max-height: 80px;
+}
+
+.imageSize{
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
